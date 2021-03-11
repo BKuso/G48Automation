@@ -27,40 +27,6 @@ public class ArraysTrainer {
         for (String key : intMap.keySet()){
             System.out.println(key + ": "+ intMap.get(key));
         }
-
-        /*
-
-        for (int i = 0; i < intArray.length; i++){
-            intList.add(intArray[i]);
-            System.out.println(intList.get(i));
-            intArray[i] = 0;
-        }
-        System.out.println("========");
-        /*
-        for (Integer value : intList){
-            System.out.println(value);
-        }
-
-
-        for (int value: intList){
-            if (value == 4){
-            } else {
-                System.out.println(value);
-            }
-        }
-
-
-
-        /*
-        int i = 4;
-        do {
-            System.out.println("Some text");
-            i++;
-        } while (i < 5);
-
-
-         */
-       // intArray[0] = 0;
     }
 
 
