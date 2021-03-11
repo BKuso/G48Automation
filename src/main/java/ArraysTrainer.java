@@ -17,10 +17,10 @@ public class ArraysTrainer {
     public void move(){
 
         intMap.put("first", 1);
-        intMap.put("second", 2);
-        intMap.put("third", 3);
-        intMap.put("fourth", 4);
-        intMap.put("another", 8);
+        intMap.put("second", 253);
+        intMap.put("third", 364);
+        intMap.put("fourth", 410);
+        intMap.put("another", 200);
 
         intMap.get("first");
 
