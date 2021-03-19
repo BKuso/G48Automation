@@ -14,7 +14,6 @@ public abstract class Item {
         this.name = name;
     }
 
-
     public Item(){
         this.log = LogManager.getLogger(this.getClass().getName());
     }
