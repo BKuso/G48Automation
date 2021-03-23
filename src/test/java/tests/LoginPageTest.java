@@ -2,22 +2,30 @@ package tests;
 
 import org.junit.Before;
 import org.junit.Test;
-import pages.LoginPageObject;
+import pages.LoginPage;
 
 public class LoginPageTest extends BaseTest{
 
 
-    private LoginPageObject loginPage;
+    private LoginPage loginPage;
 
     @Before
     public void setUp(){
-        loginPage = new LoginPageObject(driver);
+        loginPage = new LoginPage(driver);
     }
 
     @Test
-    public void checkLogin(){
-        loginPage.login(System.getProperty("username"), System.getProperty("password"));
-        //  loginPage.validateErrorMessage("Incorrect username or password.");
+    public void checkNegativeLogin(){
+        loginPage.login("admin","admin");
+        loginPage.validateErrorMessage("Incorrect username or password.");
+    }
+
+    @Test
+    public void showCommitMessageTest(){
+        loginPage.login(System.getProperty("username"), System.getProperty("password"))
+                .openProjectG48()
+                .showCommitMessage()
+                .logout();
     }
 
 
