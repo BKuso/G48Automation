@@ -16,7 +16,7 @@ public class LoginPageTest extends BaseTest{
 
     @Test
     public void checkNegativeLogin(){
-        loginPage.login("admin","admin");
+        loginPage.login("BKuso","1243asdsxx");
         loginPage.validateErrorMessage("Incorrect username or password.");
     }
 

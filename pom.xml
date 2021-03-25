@@ -8,6 +8,13 @@
     <artifactId>G48Automation</artifactId>
     <version>0.1.1</version>
 
+    <properties>
+        <driver.dir.path>${project.basedir}/src/main/resources/drivers</driver.dir.path>
+        <browser>${browser}</browser>
+        <driver.name>${driver.name}</driver.name>
+        <driver.path>${driver.path}</driver.path>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -24,13 +31,32 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.12.4</version>
                 <configuration>
-                    <systemPropertyVariables>
-                        <webdriver.chrome.driver>${project.basedir}/src/main/resources/drivers/chrome/84.0/chromedriver</webdriver.chrome.driver>
-                    </systemPropertyVariables>
+                    <argLine>-Dbrowser=${browser} -D${driver.name}=${driver.path}</argLine>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>Chrome</id>
+            <properties>
+                <browser>chrome</browser>
+                <browser.version>84.0</browser.version>
+                <driver.name>webdriver.chrome.driver</driver.name>
+                <driver.path>${driver.dir.path}/chrome/${browser.version}/chromedriver</driver.path>
+            </properties>
+        </profile>
+        <profile>
+            <id>Firefox</id>
+            <properties>
+                <browser>firefox</browser>
+                <browser.version>86.0.1</browser.version>
+                <driver.name>webdriver.gecko.driver</driver.name>
+                <driver.path>${driver.dir.path}/firefox/${browser.version}/geckodriver</driver.path>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
@@ -53,6 +79,11 @@
             <artifactId>selenium-firefox-driver</artifactId>
             <version>3.141.59</version>
         </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.59</version>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
@@ -64,7 +95,12 @@
             <artifactId>selenium-support</artifactId>
             <version>3.141.59</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.0.0</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
