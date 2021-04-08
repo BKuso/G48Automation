@@ -1,4 +1,4 @@
-package tests;
+package tests.ui;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -7,7 +7,6 @@ import org.junit.runners.Parameterized;
 import pages.LoginPage;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static helpers.FileHelper.readFile;

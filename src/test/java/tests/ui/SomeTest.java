@@ -1,4 +1,4 @@
-package tests;
+package tests.ui;
 
 import helpers.FileHelper;
 import org.junit.Test;

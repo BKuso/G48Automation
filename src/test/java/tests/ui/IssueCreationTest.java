@@ -1,9 +1,8 @@
-package tests;
+package tests.ui;
 
 import org.junit.Before;
 import org.junit.Test;
 import pages.LoginPage;
-import pages.issues.IssuesPage;
 
 import java.util.ArrayList;
 import java.util.List;

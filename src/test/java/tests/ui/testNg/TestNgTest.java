@@ -1,4 +1,4 @@
-package tests.testNg;
+package tests.ui.testNg;
 
 //import org.testng.annotations.Test;
 
