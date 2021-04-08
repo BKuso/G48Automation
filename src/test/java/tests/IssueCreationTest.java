@@ -12,8 +12,10 @@ import static java.lang.System.getProperty;
 
 public class IssueCreationTest extends BaseTest{
 
-    private  LoginPage page;
     private List<String> labels = new ArrayList<>();
+
+    private  LoginPage page;
+
 
     @Before
     public void prepareData(){

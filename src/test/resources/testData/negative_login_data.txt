@@ -1,0 +1,10 @@
+BkuSo, h23kjhr
+admin1, admin
+user1, user
+<script>alert("Error!")</script>, 123qweqwe
+jklwg, <script>alert("Error!")</script>
+admin1, #
+admin1,  OR 1=1
+BKuso, 123qweqwe
+BKuso, 123QWEqwe
+BKuso, 123qweQW

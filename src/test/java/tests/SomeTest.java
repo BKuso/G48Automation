@@ -1,35 +1,42 @@
 package tests;
 
+import helpers.FileHelper;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@RunWith(Parameterized.class)
+import static helpers.ExcelHelper.readDataFromExcelFile;
+import static helpers.ExcelHelper.writeToExcelFileAndGet;
+import static helpers.FileHelper.readFile;
+import static helpers.FileHelper.writeFileAndGet;
+import static org.junit.Assert.assertTrue;
+
 public class SomeTest {
 
-    private String username;
-    private String password;
+    @Test
+    public void some(){
+       // readFile("/home/bohdan/opensource/G48Automation/src/test/resources/test").forEach(System.out::println);
+        List<String> data = new ArrayList<>();
+        data.add("Я буду хорошим автоматизатором на Selenium");
+        data.add("Я буду хорошим автоматизатором на Selenium");
+        data.add("Я буду хорошим автоматизатором на Selenium");
+        data.add("Я буду хорошим автоматизатором на Selenium");
+        data.add("Я буду хорошим автоматизатором на Selenium");
+        data.add("Я буду хорошим автоматизатором на Selenium");
+        data.add("Я буду хорошим автоматизатором на Selenium");
 
-    public SomeTest(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-
-    @Parameterized.Parameters
-    public static List<String[]> data(){
-        List<String[]> result = new ArrayList<>();
-        result.add(new String[]{"adminUser", "adminPassword"});
-        result.add(new String[]{"testUser", "testPassword"});
-        return result;
+        readFile(writeFileAndGet(data, "our_test.txt")).forEach(System.out::println);
     }
 
     @Test
-    public void showUsernameAndPassword(){
-        System.out.println("Login: " + this.username);
-        System.out.println("Password: " + this.password);
+    public void someExcel(){
+        readDataFromExcelFile(
+                writeToExcelFileAndGet(
+                    "/home/bohdan/opensource/G48Automation/target/outputFiles/outputExcel.xls",
+                            readDataFromExcelFile(
+                            "/home/bohdan/opensource/G48Automation/src/test/resources/testData/excel_out.xls",
+                        "Sheet1")).getPath(), "Automated Sheet")
+                .forEach(System.out::println);
     }
-
 }

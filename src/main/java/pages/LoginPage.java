@@ -10,16 +10,19 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class LoginPage extends BasePage {
 
+    private static final String title = "Страница авторизации";
+
     private final By loginField = By.name("login");
     private final By passwordField = By.name("password");
     private final By submitButton = By.name("commit");
     private final By errorMessageText = By.xpath("//div[@class = 'flash flash-full flash-error ']/div");
 
     public LoginPage(WebDriver driver) {
-        super(driver);
+        super(driver, title);
     }
 
     public MainPage login(String username, String password){
+        LOG.info("Производится авторизация...");
         driver.findElement(loginField).sendKeys(username);
         driver.findElement(passwordField).sendKeys(password);
         driver.findElement(submitButton).click();

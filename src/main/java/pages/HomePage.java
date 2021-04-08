@@ -6,8 +6,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage{
 
+    private static final String title = "Домашняя страница";
+
     public HomePage(WebDriver driver) {
-        super(driver);
+        super(driver, title);
     }
 
     private final By homePageTitle = By.xpath("//h1");
