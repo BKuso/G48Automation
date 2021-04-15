@@ -2,25 +2,43 @@ package tests.ui;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import pages.LoginPage;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static helpers.ExcelHelper.readDataProviderFromExcel;
 import static java.lang.System.getProperty;
 
+@RunWith(Parameterized.class)
 public class IssueCreationTest extends BaseTest{
 
-    private List<String> labels = new ArrayList<>();
+    private final String title;
+    private final String body;
+    private final List<String> labels;
 
     private  LoginPage page;
 
+    public IssueCreationTest(String title,
+                             String body,
+                             List<String> labels) {
+        this.title = title;
+        this.body = body;
+        this.labels = labels;
+    }
+
+    @Parameterized.Parameters
+    public static List<Object[]> data(){
+        return readDataProviderFromExcel(
+                "/home/bohdan/opensource/G48Automation/src/test/resources/testData/excel_out.xls",
+                "Sheet1");
+    }
 
     @Before
     public void prepareData(){
         this.page = new LoginPage(this.driver);
-        labels.add("bug");
-        labels.add("invalid");
     }
 
     @Test
@@ -30,10 +48,13 @@ public class IssueCreationTest extends BaseTest{
                 .openIssues()
                 .openCreationPage()
                 .createNewIssue(
-                        "Automated Issue Title",
-                        "Test body. Please ignore me!", labels)
-                .validateIssue("Automated Issue Title",
-                        "Test body. Please ignore me!", labels)
+                        this.title,
+                        this.body,
+                        this.labels)
+                .validateIssue(
+                        this.title,
+                        this.body,
+                        this.labels)
                 .logout();
 
     }

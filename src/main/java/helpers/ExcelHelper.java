@@ -40,6 +40,36 @@ public class ExcelHelper {
         return result;
     }
 
+    public static List<Object[]> readDataProviderFromExcel(String path, String sheetName){
+        List<Object[]> result = new ArrayList<>();
+        try {
+            HSSFWorkbook book = new HSSFWorkbook(new FileInputStream(path));
+            Sheet sheet = book.getSheet(sheetName);
+            for (int i = 0; i <= sheet.getLastRowNum(); i++){
+                Row row = sheet.getRow(i);
+                Object[] temp = new Object[3];
+                List<String> labels =new ArrayList<>();
+                for (int a = 0; a < row.getLastCellNum(); a++){
+                    Cell cell = row.getCell(a);
+                    String data = cellIsString(cell)
+                            ? cell.getStringCellValue()
+                            : String.valueOf(cell.getNumericCellValue());
+                    if(a == 0 || a == 1){
+                        temp[a] = data;
+                    } else {
+                        labels.add(data);
+                        temp[2] = labels;
+                    }
+                }
+                result.add(temp);
+
+            }
+        } catch (IOException e) {
+            log.error(e);
+        }
+        return result;
+    }
+
     public static File writeToExcelFileAndGet(String path, List<List<String>> data){
         File input = new File(path);
         File parent = input.getParentFile();

@@ -1,9 +1,5 @@
 package tests.api;
 
-import io.restassured.path.json.JsonPath;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.Matchers;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -11,7 +7,6 @@ import org.junit.runners.Parameterized;
 import java.util.ArrayList;
 import java.util.List;
 
-import static io.restassured.RestAssured.form;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.hasItems;
@@ -39,7 +34,7 @@ public class PrivatGetCurrencyTest extends BaseApiTest{
     public void checkCurrencyInPB(){
    //     String response =
         given().spec(rspec)
-                .queryParam("exchange")
+             //   .queryParam("exchange")
                 .queryParam("coursid", this.courseId)
         .when()
                 .log()
@@ -60,7 +55,7 @@ public class PrivatGetCurrencyTest extends BaseApiTest{
         Assert.assertTrue(ccy.contains("USD"));
         Assert.assertEquals(4, ccy.size());
         Assert.assertTrue(baseCcy.contains("UAH"));
-
+        http://testapi.novaposhta.ua/v2.0
          */
     }
 

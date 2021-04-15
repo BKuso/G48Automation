@@ -32,7 +32,8 @@ public class NegativeLoginTest extends BaseTest{
     @Parameterized.Parameters
     public static List<Object[]> data(){
         List<Object[]> result = new ArrayList<>();
-        readFile(getProperty("user.dir") + "/src/test/resources/testData/negative_login_data.txt").forEach(line -> result.add(line.split(", ")));
+        readFile(getProperty("user.dir") + "/src/test/resources/testData/negative_login_data.txt")
+                .forEach(line -> result.add(line.split(", ")));
         return result;
     }
 

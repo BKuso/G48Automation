@@ -4,10 +4,10 @@ import helpers.FileHelper;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import static helpers.ExcelHelper.readDataFromExcelFile;
-import static helpers.ExcelHelper.writeToExcelFileAndGet;
+import static helpers.ExcelHelper.*;
 import static helpers.FileHelper.readFile;
 import static helpers.FileHelper.writeFileAndGet;
 import static org.junit.Assert.assertTrue;
@@ -39,4 +39,12 @@ public class SomeTest {
                         "Sheet1")).getPath(), "Automated Sheet")
                 .forEach(System.out::println);
     }
+
+    @Test
+    public void checkExcelProvider(){
+        readDataProviderFromExcel("/home/bohdan/opensource/G48Automation/src/test/resources/testData/excel_out.xls",
+                "Sheet1").forEach(
+                objectArray -> System.out.println(Arrays.asList(objectArray)));
+    }
+
 }
