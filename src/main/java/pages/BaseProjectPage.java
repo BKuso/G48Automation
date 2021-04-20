@@ -13,6 +13,8 @@ public abstract class BaseProjectPage extends BaseAuthorizedPage{
 
     private final By codeTab = By.xpath("//span[@data-content = 'Code']");
     private final By issuesTab = By.xpath("//span[@data-content = 'Issues']");
+
+
     //todo Дописать сюда нужные вкладки
     //........
     private final By settingsTab = By.xpath("//span[@data-content = 'Settings']");

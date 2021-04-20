@@ -34,8 +34,11 @@ public class PrivatGetCurrencyTest extends BaseApiTest{
     public void checkCurrencyInPB(){
    //     String response =
         given().spec(rspec)
-             //   .queryParam("exchange")
+                .baseUri("https://api.privatbank.ua/p24api")
+                .queryParam("json")
+                .queryParam("exchange")
                 .queryParam("coursid", this.courseId)
+                .relaxedHTTPSValidation()
         .when()
                 .log()
                 .everything()

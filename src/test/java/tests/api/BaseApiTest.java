@@ -14,8 +14,6 @@ public abstract class BaseApiTest {
     @Before
     public void setUp(){
         this.rspec = new RequestSpecBuilder()
-                .setBaseUri("https://api.privatbank.ua/p24api")
-                .addQueryParam("json")
                 .build();
         this.respSpec = new ResponseSpecBuilder()
                 .expectStatusCode(200)

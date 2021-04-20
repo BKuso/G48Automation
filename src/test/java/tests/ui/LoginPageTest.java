@@ -1,5 +1,6 @@
 package tests.ui;
 
+import dbModels.Users;
 import org.junit.Before;
 import org.junit.Test;
 import pages.LoginPage;
@@ -16,7 +17,11 @@ public class LoginPageTest extends BaseTest{
 
     @Test
     public void checkNegativeLogin(){
-        loginPage.login("BKuso","1243asdsxx");
+      //  loginPage.login("BKuso","1243asdsxx");
+        Users user = Users.findById(1);
+        loginPage.login(
+                user.getString("username"),
+                user.getString("password"));
         loginPage.validateErrorMessage("Incorrect username or password.");
     }
 
