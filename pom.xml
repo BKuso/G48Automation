@@ -13,6 +13,7 @@
         <browser>${browser}</browser>
         <driver.name>${driver.name}</driver.name>
         <driver.path>${driver.path}</driver.path>
+        <aspectj.version>1.8.10</aspectj.version>
     </properties>
 
     <build>
@@ -27,14 +28,6 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.12.4</version>
-                <configuration>
-                    <argLine>-Dbrowser=${browser} -D${driver.name}=${driver.path}</argLine>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.javalite</groupId>
                 <artifactId>activejdbc-instrumentation</artifactId>
                 <version>3.0-j11</version>
@@ -46,13 +39,44 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+                <configuration>
+                    <useSystemClassLoader>false</useSystemClassLoader>
+                    <argLine>
+                        -Dbrowser=${browser} -D${driver.name}=${driver.path}
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                    <systemPropertyVariables>
+                        <username>BKuso</username>
+                        <password>Ovrush20</password>
+                        <allure.results.directory>${project.basedir}/target/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>io.qameta.allure.junit4.AllureJunit4</value>
+                        </property>
+                    </properties>
+                </configuration>
                 <dependencies>
                     <dependency>
-                        <groupId>org.javalite</groupId>
-                        <artifactId>activejdbc-instrumentation</artifactId>
-                        <version>3.0-j11</version>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
+                <configuration>
+                    <reportVersion>2.8.1</reportVersion>
+                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -151,7 +175,16 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.19</version>
         </dependency>
-
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit4</artifactId>
+            <version>2.13.9</version>
+        </dependency>
+        <dependency>
+            <groupId>aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.5.4</version>
+        </dependency>
 
     </dependencies>
 

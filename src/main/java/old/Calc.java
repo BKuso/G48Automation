@@ -1,3 +1,5 @@
+package old;
+
 public class Calc {
 
     public int sum(String first, double second) {

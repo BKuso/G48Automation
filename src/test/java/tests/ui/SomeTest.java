@@ -3,6 +3,7 @@ package tests.ui;
 import dbModels.Users;
 import helpers.FileHelper;
 import org.javalite.activejdbc.DB;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class SomeTest {
         readFile(writeFileAndGet(data, "our_test.txt")).forEach(System.out::println);
     }
 
-    @Test
+   // @Test
     public void someExcel(){
         readDataFromExcelFile(
                 writeToExcelFileAndGet(
@@ -52,6 +53,7 @@ public class SomeTest {
                 objectArray -> System.out.println(Arrays.asList(objectArray)));
     }
 
+    @Ignore("Потому что нет соедения с базой")
     @Test
     public void checkDbTest(){
         new DB("study")
@@ -82,7 +84,7 @@ public class SomeTest {
         new DB("study").close();
     }
 
-    @Test
+   // @Test
     public void checkDbQuery(){
         /*
         String login = executeQueryWithResult(
