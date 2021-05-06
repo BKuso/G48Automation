@@ -1,5 +1,7 @@
 package tests.ui;
 
+import io.qameta.allure.*;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +14,10 @@ import java.util.List;
 import static helpers.ExcelHelper.readDataProviderFromExcel;
 import static java.lang.System.getProperty;
 
+@Story("Positive")
+@Feature("Github Issue Creation")
+@Owner("BKuso")
+@Severity(SeverityLevel.CRITICAL)
 @RunWith(Parameterized.class)
 public class IssueCreationTest extends BaseTest{
 
@@ -41,6 +47,8 @@ public class IssueCreationTest extends BaseTest{
         this.page = new LoginPage(this.driver);
     }
 
+    @Description("Тест нужен для создания проблемы в проекте")
+    @DisplayName("Завести проблему в проекте")
     @Test
     public void checkIssueCreation(){
         this.page.login(getProperty("username"), getProperty("password"))

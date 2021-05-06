@@ -5,6 +5,9 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static helpers.PropertyLoader.loadProperty;
+import static java.lang.Integer.parseInt;
+
 public abstract class BasePage {
 
     protected final Logger LOG;
@@ -16,8 +19,8 @@ public abstract class BasePage {
     public BasePage(WebDriver driver, String title){
         this.LOG = LogManager.getLogger(title);
         this.driver = driver;
-        this.waitFor10 = new WebDriverWait(this.driver, 10);
-        this.waitFor25 = new WebDriverWait(this.driver, 25);
+        this.waitFor10 = new WebDriverWait(this.driver, parseInt(loadProperty("timeout.explicit.first")));
+        this.waitFor25 = new WebDriverWait(this.driver, parseInt(loadProperty("timeout.explicit.second")));
     }
 
 }

@@ -5,6 +5,7 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.junit.Before;
+import rules.RestAssuredAllureFilter;
 
 public abstract class BaseApiTest {
 
@@ -14,6 +15,7 @@ public abstract class BaseApiTest {
     @Before
     public void setUp(){
         this.rspec = new RequestSpecBuilder()
+                .addFilter(new RestAssuredAllureFilter())
                 .build();
         this.respSpec = new ResponseSpecBuilder()
                 .expectStatusCode(200)

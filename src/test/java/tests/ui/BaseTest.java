@@ -6,19 +6,27 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
+
+import static helpers.PropertyLoader.loadProperty;
+import static java.lang.Double.parseDouble;
+import static java.lang.Integer.parseInt;
 
 public abstract class BaseTest {
 
-    protected WebDriver driver;
-
+    protected RemoteWebDriver driver;
 
     @Rule
     public TestWatcher watcher = new TestWatcher() {
@@ -52,20 +60,37 @@ public abstract class BaseTest {
     @Before
     public void init(){
         String browserName = System.getProperty("browser", "chrome");
-        switch (browserName){
-            case "firefox":
-                this.driver = new FirefoxDriver();
-                break;
-            case "opera":
-                this.driver = new OperaDriver();
-                break;
-            default:
-                this.driver = new ChromeDriver();
-                break;
+
+        if(System.getProperty("remote.launch", "true").equals("true")){
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setBrowserName(browserName);
+            capabilities.setVersion(browserName);
+            capabilities.setCapability("version", System.getProperty("browser.version"));
+            capabilities.setCapability("enableVNC", true);
+            capabilities.setCapability("enableVideo", false);
+            try {
+                this.driver = new RemoteWebDriver(new URL("http://172.17.0.6:4444/wd/hub"), capabilities);
+            } catch (MalformedURLException e) {
+
+            }
+        } else {
+                switch (browserName){
+                    case "firefox":
+                        this.driver = new FirefoxDriver();
+                        break;
+                    case "opera":
+                        this.driver = new OperaDriver();
+                        break;
+                    default:
+                        this.driver = new ChromeDriver();
+                        break;
+                }
         }
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(
+                parseInt(loadProperty("timeout.implicit")),
+                TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get("https://github.com/login");
+        driver.get(loadProperty("app.url"));
     }
 
     @After

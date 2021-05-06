@@ -11,6 +11,7 @@
     <properties>
         <driver.dir.path>${project.basedir}/src/main/resources/drivers</driver.dir.path>
         <browser>${browser}</browser>
+        <browser.version>${browser.version}</browser.version>
         <driver.name>${driver.name}</driver.name>
         <driver.path>${driver.path}</driver.path>
         <aspectj.version>1.8.10</aspectj.version>
@@ -47,7 +48,7 @@
                 <configuration>
                     <useSystemClassLoader>false</useSystemClassLoader>
                     <argLine>
-                        -Dbrowser=${browser} -D${driver.name}=${driver.path}
+                        -Dbrowser=${browser} -Dbrowser.version=${browser.version} -D${driver.name}=${driver.path}
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <systemPropertyVariables>
@@ -86,7 +87,7 @@
             <id>Chrome</id>
             <properties>
                 <browser>chrome</browser>
-                <browser.version>84.0</browser.version>
+                <browser.version>87.0</browser.version>
                 <driver.name>webdriver.chrome.driver</driver.name>
                 <driver.path>${driver.dir.path}/chrome/${browser.version}/chromedriver</driver.path>
             </properties>
@@ -185,6 +186,12 @@
             <artifactId>aspectjrt</artifactId>
             <version>1.5.4</version>
         </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-rest-assured</artifactId>
+            <version>2.13.9</version>
+        </dependency>
+
 
     </dependencies>
 

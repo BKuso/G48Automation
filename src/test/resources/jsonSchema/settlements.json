@@ -66,13 +66,11 @@
                 },
                 "MainDescription": {
                   "title": "Maindescription",
-                  "type": "string",
-                  "enum": ["Київ"]
+                  "type": "string"
                 },
                 "Area": {
                   "title": "Area",
-                  "type": "string",
-                  "enum": ["Львівська"]
+                  "type": "string"
                 },
                 "Region": {
                   "title": "Region",

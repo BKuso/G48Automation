@@ -6,10 +6,9 @@ import org.javalite.activejdbc.DB;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.*;
 
 import static helpers.DbHelper.executeQuery;
 import static helpers.DbHelper.executeQueryWithResult;
@@ -98,5 +97,14 @@ public class SomeTest {
          */
         executeQuery("delete from data.users where id = 5");
     }
+
+    @Test
+    public void checkSystemProperty(){
+        System.setProperty("login", "BKuso");
+        String username = System.getProperty("username", "");
+
+
+    }
+
 
 }

@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.code.CodePage;
@@ -24,6 +25,7 @@ public abstract class BaseProjectPage extends BaseAuthorizedPage{
         return new CodePage(driver);
     }
 
+    @Step("Открываем вкладку \"Issues\"")
     public IssuesPage openIssues(){
         LOG.info("Открыватся вкладка задач проекта");
         driver.findElement(issuesTab).click();

@@ -1,5 +1,7 @@
 package tests.ui;
 
+import io.qameta.allure.*;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +14,10 @@ import java.util.List;
 import static helpers.FileHelper.readFile;
 import static java.lang.System.getProperty;
 
+@Story("Negative")
+@Feature("Github Authorization")
+@Owner("BKuso")
+@Severity(SeverityLevel.CRITICAL)
 @RunWith(Parameterized.class)
 public class NegativeLoginTest extends BaseTest{
 
@@ -37,6 +43,7 @@ public class NegativeLoginTest extends BaseTest{
         return result;
     }
 
+    @DisplayName("Проверка авторизации негативными значениями")
     @Test
     public void checkNegativeLogin(){
         loginPage.login(this.username,this.password);
