@@ -19,7 +19,7 @@ import static org.junit.Assert.assertTrue;
 
 public class SomeTest {
 
-    @Test
+   // @Test
     public void some(){
        // readFile("/home/bohdan/opensource/G48Automation/src/test/resources/test").forEach(System.out::println);
         List<String> data = new ArrayList<>();
@@ -45,7 +45,7 @@ public class SomeTest {
                 .forEach(System.out::println);
     }
 
-    @Test
+   // @Test
     public void checkExcelProvider(){
         readDataProviderFromExcel("/home/bohdan/opensource/G48Automation/src/test/resources/testData/excel_out.xls",
                 "Sheet1").forEach(

@@ -3,6 +3,7 @@ package tests.ui;
 import io.qameta.allure.*;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import pages.LoginPage;
 
@@ -20,16 +21,10 @@ public class LoginPageTest extends BaseTest{
         loginPage = new LoginPage(driver);
     }
 
+    @Ignore("Дублирует параметризированный тест")
     @Test
     public void checkNegativeLogin(){
         loginPage.login("BKuso","1243asdsxx");
-        /*
-        Users user = Users.findById(1);
-        loginPage.login(
-                user.getString("username"),
-                user.getString("password"));
-
-         */
         loginPage.validateErrorMessage("Incorrect username or password.");
     }
 
