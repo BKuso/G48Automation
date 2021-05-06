@@ -85,16 +85,16 @@ public abstract class BaseTest {
                         break;
                 }
         }
-        driver.manage().timeouts().implicitlyWait(
+        this.driver.manage().timeouts().implicitlyWait(
                 parseInt(loadProperty("timeout.implicit")),
                 TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        driver.get(loadProperty("app.url"));
+        this.driver.manage().window().maximize();
+        this.driver.get(loadProperty("app.url"));
     }
 
     @After
     public void exit(){
-        driver.quit();
+        this.driver.quit();
     }
 
 

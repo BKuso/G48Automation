@@ -38,7 +38,7 @@ public class IssueCreationTest extends BaseTest{
     @Parameterized.Parameters
     public static List<Object[]> data(){
         return readDataProviderFromExcel(
-                "/home/bohdan/opensource/G48Automation/src/test/resources/testData/excel_out.xls",
+                System.getProperty("user.dir") + "/src/test/resources/testData/excel_out.xls",
                 "Sheet1");
     }
 
