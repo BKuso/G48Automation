@@ -64,7 +64,6 @@ public abstract class BaseTest {
         if(System.getProperty("remote.launch", "true").equals("true")){
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName(browserName);
-            capabilities.setVersion(browserName);
             capabilities.setCapability("version", System.getProperty("browser.version"));
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", false);

@@ -58,7 +58,7 @@ public class SomeTest {
         new DB("study")
                 .open(
                         "org.postgresql.Driver",
-                        "jdbc:postgresql://localhost:5432/study",
+                        "jdbc:postgresql://172.17.0.5:5432/study",
                         "postgres",
                         "postgres");
         //create

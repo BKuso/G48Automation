@@ -7,7 +7,7 @@ import java.util.List;
 public class DbHelper {
 
     private static final String JDBC_DRIVER = "org.postgresql.Driver";
-    private static final String DATABASE_URL = "jdbc:postgresql://localhost:5432/study";
+    private static final String DATABASE_URL = "jdbc:postgresql://172.17.0.5:5432/study";
 
     private static final String USER = "postgres";
     private static final String PASSWORD = "postgres";
