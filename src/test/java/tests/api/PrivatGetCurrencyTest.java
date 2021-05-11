@@ -1,5 +1,6 @@
 package tests.api;
 
+import io.restassured.filter.log.LogDetail;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -41,11 +42,11 @@ public class PrivatGetCurrencyTest extends BaseApiTest{
                 .relaxedHTTPSValidation()
         .when()
                 .log()
-                .everything()
+                .ifValidationFails(LogDetail.ALL)
                 .get("/pubinfo")
         .then()
                 .log()
-                .everything()
+                .ifValidationFails(LogDetail.ALL)
                 .spec(respSpec)
                 .assertThat()
                 .body("ccy", hasItems("USD", "EUR", "BTC", "RUR"))

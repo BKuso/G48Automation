@@ -33,8 +33,10 @@ public class LoginPage extends BasePage {
 
     @Step("Валидируем сообщение об ошибке")
     public LoginPage validateErrorMessage(String errorMessage){
+        LOG.info("Валидируется сообщение о неуспешной авторизации...");
         waitFor25.until(visibilityOf(driver.findElement(errorMessageText)));
         Assert.assertEquals(errorMessage, driver.findElement(errorMessageText).getText());
+        LOG.info("Ожидаемое сообщение об ошибке получено!");
         return this;
     }
 

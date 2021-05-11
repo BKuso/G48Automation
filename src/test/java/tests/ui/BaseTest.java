@@ -6,10 +6,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
@@ -21,7 +19,6 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import static helpers.PropertyLoader.loadProperty;
-import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
 public abstract class BaseTest {

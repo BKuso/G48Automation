@@ -1,5 +1,6 @@
 package tests.api;
 
+import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,11 +36,11 @@ public class NpSettlementsTest extends BaseApiTest{
                 .body(body)
                 .when()
                 .log()
-                .all()
+                .ifValidationFails(LogDetail.ALL)
                 .post("/json/Address/searchSettlements/")
                 .then()
                 .log()
-                .all()
+                .ifValidationFails(LogDetail.ALL)
                 .spec(respSpec)
                 .assertThat()
                 .body(
