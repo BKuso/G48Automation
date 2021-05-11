@@ -63,7 +63,7 @@ public abstract class BaseTest {
             capabilities.setBrowserName(browserName);
             capabilities.setCapability("version", System.getProperty("browser.version"));
             capabilities.setCapability("enableVNC", true);
-            capabilities.setCapability("enableVideo", false);
+            capabilities.setCapability("enableVideo", true);
             try {
                 this.driver = new RemoteWebDriver(new URL("http://172.17.0.1:4444/wd/hub"), capabilities);
             } catch (MalformedURLException e) {
