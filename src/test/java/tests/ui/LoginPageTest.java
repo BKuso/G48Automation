@@ -22,6 +22,7 @@ public class LoginPageTest extends BaseTest{
     }
 
     @Ignore("Дублирует параметризированный тест")
+    @Deprecated
     @Test
     public void checkNegativeLogin(){
         loginPage.login("BKuso","1243asdsxx");

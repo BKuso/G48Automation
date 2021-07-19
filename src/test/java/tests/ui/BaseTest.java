@@ -66,21 +66,14 @@ public abstract class BaseTest {
             capabilities.setCapability("enableVideo", true);
             try {
                 this.driver = new RemoteWebDriver(new URL("http://172.17.0.1:4444/wd/hub"), capabilities);
-            } catch (MalformedURLException e) {
-
+            } catch (MalformedURLException ignored) {
             }
         } else {
-                switch (browserName){
-                    case "firefox":
-                        this.driver = new FirefoxDriver();
-                        break;
-                    case "opera":
-                        this.driver = new OperaDriver();
-                        break;
-                    default:
-                        this.driver = new ChromeDriver();
-                        break;
-                }
+            switch (browserName) {
+                case "firefox" -> this.driver = new FirefoxDriver();
+                case "opera" -> this.driver = new OperaDriver();
+                default -> this.driver = new ChromeDriver();
+            }
         }
         this.driver.manage().timeouts().implicitlyWait(
                 parseInt(loadProperty("timeout.implicit")),

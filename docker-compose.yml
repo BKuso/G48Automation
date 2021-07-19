@@ -2,13 +2,24 @@ version: "3.2"
 
 services:
 
-  postgresql:
+#  postgresql:
+#    network_mode: bridge
+#    image: postgres:11
+#    container_name: database
+#    ports:
+#      - 5432:5432
+#    environment:
+#      PGDATA: /var/lib/postgresql/data
+#      POSTGRES_USER: postgres
+#      POSTGRES_PASSWORD: postgres
+
+  allure:
     network_mode: bridge
-    image: postgres:11
-    container_name: database
-    ports:
-      - 5432:5432
+    image: "frankescobar/allure-docker-service"
     environment:
-      PGDATA: /var/lib/postgresql/data
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      CHECK_RESULTS_EVERY_SECONDS: 300
+      KEEP_HISTORY: "TRUE"
+    ports:
+      - 5050:5050
+    volumes:
+      - ./allure/allure-results/:/app/allure-results/

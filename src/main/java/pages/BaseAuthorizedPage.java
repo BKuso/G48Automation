@@ -1,5 +1,6 @@
 package pages;
 
+import annotations.SpiraTestStep;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,7 @@ public abstract class BaseAuthorizedPage extends BasePage{
     private final By logOutButton = By.xpath("//button[contains(text(), 'Sign')]");
 
     @Step("Выходим из приложения")
+    @SpiraTestStep(id = 5)
     public HomePage logout(){
         LOG.info("Выход из приложения");
         driver.findElement(userProfileButton).click();

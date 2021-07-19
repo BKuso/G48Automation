@@ -1,5 +1,6 @@
 package pages;
 
+import annotations.SpiraTestStep;
 import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -23,6 +24,7 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Производится авторизация")
+    @SpiraTestStep(id = 1)
     public MainPage login(String username, String password){
         LOG.info("Производится авторизация...");
         driver.findElement(loginField).sendKeys(username);
@@ -32,6 +34,7 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Валидируем сообщение об ошибке")
+    @SpiraTestStep(id = 2)
     public LoginPage validateErrorMessage(String errorMessage){
         LOG.info("Валидируется сообщение о неуспешной авторизации...");
         waitFor25.until(visibilityOf(driver.findElement(errorMessageText)));

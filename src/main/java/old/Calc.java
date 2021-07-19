@@ -1,6 +1,8 @@
 package old;
 
-public class Calc {
+import java.util.Map;
+
+public class Calc implements Filter{
 
     public int sum(String first, double second) {
         return Integer.parseInt(first) + (int) second;
@@ -81,4 +83,8 @@ public class Calc {
         }
     }
 
+    @Override
+    public void makeFilter(Map<String, String> dataForFilter) {
+
+    }
 }

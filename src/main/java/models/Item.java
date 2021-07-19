@@ -3,7 +3,7 @@ package models;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public abstract class Item {
+public abstract class Item extends SomeClass{
 
     private String type;
     protected final Logger log;

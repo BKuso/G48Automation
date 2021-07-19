@@ -21,9 +21,9 @@ import static java.lang.System.getProperty;
 @RunWith(Parameterized.class)
 public class IssueCreationTest extends BaseTest{
 
-    private final String title;
-    private final String body;
-    private final List<String> labels;
+    private String title;
+    private String body;
+    private List<String> labels;
 
     private  LoginPage page;
 

@@ -1,5 +1,6 @@
 package pages;
 
+import annotations.SpiraTestStep;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +19,7 @@ public class MainPage extends BaseAuthorizedPage{
     private final By repositoryLink = By.xpath("//span[@title = 'G48Automation']");
 
     @Step("Открываем проект G48Automation")
+    @SpiraTestStep(id = 3)
     public CodePage openProjectG48(){
         LOG.info("Открывается страница проекта G48Automation");
         waitFor25.until(elementToBeClickable(repositoryLink)).click();
